@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/linear-crypt/static/css/main.b99ba4b2.css",
+    "main.js": "/linear-crypt/static/js/main.2979d1b1.js",
+    "static/media/Montserrat-Regular.ttf": "/linear-crypt/static/media/Montserrat-Regular.e20d5327f1a05620c084.ttf",
+    "index.html": "/linear-crypt/index.html",
+    "main.b99ba4b2.css.map": "/linear-crypt/static/css/main.b99ba4b2.css.map",
+    "main.2979d1b1.js.map": "/linear-crypt/static/js/main.2979d1b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b99ba4b2.css",
+    "static/js/main.2979d1b1.js"
+  ]
+}
