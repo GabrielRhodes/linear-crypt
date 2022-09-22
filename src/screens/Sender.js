@@ -1,4 +1,3 @@
-/* global BigInt */
 import { useState, useEffect } from 'react'
 import Message from '../components/Message'
 import Prompt from '../components/Prompt'
@@ -17,7 +16,7 @@ function Sender() {
   const cleaners = [
     () => {
       let msg = document.getElementById('channel-number')?.value
-      seta(BigInt(msg))
+      seta(parseInt(msg))
       setb(Math.ceil(Math.random() * 997) + 3)
       let newArr = messages.slice(0)
       newArr.push(
