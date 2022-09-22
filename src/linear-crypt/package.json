@@ -1,0 +1,15 @@
+{
+  "name": "linear-crypt",
+  "version": "1.0.0",
+  "description": "A Linear Algebra Encryption Program",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm i && node index.js"
+  },
+  "type": "module",
+  "author": "Gabriel Rhodes",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^9.1.0"
+  }
+}

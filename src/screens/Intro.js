@@ -12,7 +12,7 @@ function Intro({ setter }) {
           encryption JavaScript program that can encrypt text-based messages
           with ease. Below, I will be explaining the code a bit. Feel free to
           use&emsp;
-          <a href='linearCrypt.js' download={true}>
+          <a href='https://github.com/GabrielRhodes/linear-crypt/tree/main/src/linear-crypt'>
             the code
           </a>
           &emsp;in any way you wish, just be advised that it is not the safest

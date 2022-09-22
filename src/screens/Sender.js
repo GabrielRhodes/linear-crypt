@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Message from '../components/Message'
 import Prompt from '../components/Prompt'
-import { LinearCrypter } from '../linear-crypt'
+import { LinearCrypter } from '../linear-crypt/index.mjs'
 
 function Sender() {
   const primP = 309n
@@ -128,7 +128,7 @@ function Sender() {
       newArr.push(
         <Message
           message={`Decrypted Message: \n[${cryptr
-            .matrixMultiply(cryptr.decryptMatrix(), cryptr.encrypt(message))
+            .matrixMultiply(cryptr.encryptMatrix(-1), cryptr.encrypt(message))
             .round()
             .matrix.map((arr) => `[${arr.join(',')}]`)
             .join('')}]`}

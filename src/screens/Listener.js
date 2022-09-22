@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Message from '../components/Message'
 import Prompt from '../components/Prompt'
-import { LinearCrypter } from '../linear-crypt'
+import { LinearCrypter } from '../linear-crypt/index.mjs'
 
 function Listener() {
   const primP = 309n

@@ -1,28 +1,22 @@
 function Prompt({ prompt, cleanup, mode }) {
+  function Next() {
+    return <button onClick={() => cleanup()}>Next</button>
+  }
+
   const prompts =
     mode === 'listener'
       ? [
-          <>
-            <button onClick={() => cleanup()}>Get Paramaters</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>See Public Key</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>See Other Key</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Get Chunker and Salt Info</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Hear Message</button>
-          </>,
+          <Next />,
+          <Next />,
+          <Next />,
+          <Next />,
+          <Next />,
           <>
             <input id='message-input' />
             <button onClick={() => cleanup()}>Guess</button>
           </>,
           <>
-            <button onClick={() => cleanup()}>Get Result</button>
+            <button onClick={() => cleanup()}>Check</button>
           </>,
           <></>,
         ]
@@ -36,34 +30,22 @@ function Prompt({ prompt, cleanup, mode }) {
               max={1000}
               defaultValue={Math.round(Math.random() * 997) + 3}
             />
-            <button onClick={() => cleanup()}>Submit Channel</button>
+            <Next />,
           </>,
-          <>
-            <button onClick={() => cleanup()}>Recieve Public Channel</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Calculate Public Channel</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Calculate Private Channel</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Get Paramaters</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Create Crypter</button>
-          </>,
+          <Next />,
+          <Next />,
+          <Next />,
+          <Next />,
+          <Next />,
           <>
             {mode === 'sender' ? (
               <input id='message-input' defaultValue='Hello World' />
             ) : null}
-            <button onClick={() => cleanup()}>Get Message</button>
+            <Next />,
           </>,
+          <Next />,
           <>
-            <button onClick={() => cleanup()}>Enter Message</button>
-          </>,
-          <>
-            <button onClick={() => cleanup()}>Textify Message</button>
+            <button onClick={() => cleanup()}>Complete</button>
           </>,
           <></>,
         ]
