@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import Message from '../components/Message'
 import Prompt from '../components/Prompt'
 import { LinearCrypter } from '../linear-crypt/index.mjs'
+import BigNumber from 'bignumber.js'
 
 function Listener() {
-  const primP = 309
+  const primP = BigNumber(309)
   const primN = 311
   const [a, seta] = useState(0)
   const [b, setb] = useState(0)
@@ -43,7 +44,7 @@ function Listener() {
       let newArr = messages.slice(0)
       newArr.push(
         <Message
-          message={`My public key is ${primP ** newA % primN}`}
+          message={`My public key is ${primP.pow(newA).mod(primN)}`}
           sender='Computer 1'
           mode={1}
           key={newArr.length}
@@ -53,11 +54,11 @@ function Listener() {
       setStep(step + 1)
     },
     () => {
-      setPrivateChannel((primP ** b % primN) ** a % primN)
+      setPrivateChannel(primP.pow(b).mod(primN).pow(a).mod(primN))
       let newArr = messages.slice(0)
       newArr.push(
         <Message
-          message={`My public key is ${primP ** b % primN}`}
+          message={`My public key is ${primP.pow(b).mod(primN)}`}
           sender='Computer 2'
           mode={1}
           key={newArr.length}

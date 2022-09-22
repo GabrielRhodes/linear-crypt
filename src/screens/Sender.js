@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import Message from '../components/Message'
 import Prompt from '../components/Prompt'
 import { LinearCrypter } from '../linear-crypt/index.mjs'
+import BigNumber from 'bignumber.js'
 
 function Sender() {
-  const primP = 309
+  const primP = BigNumber(309)
   const primN = 311
   const [a, seta] = useState(0)
   const [b, setb] = useState(0)
@@ -34,7 +35,7 @@ function Sender() {
       let newArr = messages.slice(0)
       newArr.push(
         <Message
-          message={`My public key is ${primP ** b % primN}`}
+          message={`My public key is ${primP.pow(b).mod(primN)}`}
           sender='Computer'
           mode={1}
           key={newArr.length}
@@ -47,7 +48,7 @@ function Sender() {
       let newArr = messages.slice(0)
       newArr.push(
         <Message
-          message={`My public key is ${primP ** a % primN}`}
+          message={`My public key is ${primP.pow(a).mod(primN)}`}
           sender='You'
           mode={1}
           key={newArr.length}
@@ -58,12 +59,16 @@ function Sender() {
     },
     () => {
       let newArr = messages.slice(0)
-      setPrivateChannel((primP ** b % primN) ** a % primN)
+      setPrivateChannel(primP.pow(b).mod(primN).pow(a).mod(primN))
       newArr.push(
         <Message
-          message={`That means our private key must be ${
-            primP ** b % primN
-          } ^ ${a} % ${primN} which is ${(primP ** b % primN) ** a % primN}`}
+          message={`That means our private key must be ${primP
+            .pow(b)
+            .mod(primN)} ^ ${a} % ${primN} which is ${primP
+            .pow(b)
+            .mod(primN)
+            .pow(a)
+            .mod(primN)}`}
           sender='You'
           mode={0}
           key={newArr.length}
