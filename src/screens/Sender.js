@@ -5,29 +5,20 @@ import Prompt from '../components/Prompt'
 import { LinearCrypter } from '../linear-crypt/index.mjs'
 
 function Sender() {
-  const primP = 309n
-  const primN = 311n
-  const [a, seta] = useState(0n)
-  const [b, setb] = useState(0n)
+  const primP = 309
+  const primN = 311
+  const [a, seta] = useState(0)
+  const [b, setb] = useState(0)
   const [privateChannel, setPrivateChannel] = useState(0)
   const [step, setStep] = useState(0)
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  function randBigInt(range) {
-    var rand = [],
-      digits = (range.toString().length / 9 + 2) | 0
-    while (digits--) {
-      rand.push(('' + ((Math.random() * 1000000000) | 0)).padStart(9, '0'))
-    }
-    return BigInt(rand.join('')) % range // Leading zeros are ignored
-  }
-
   const cleaners = [
     () => {
       let msg = document.getElementById('channel-number')?.value
       seta(BigInt(msg))
-      setb(randBigInt(1000n))
+      setb(Math.ceil(Math.random() * 997) + 3)
       let newArr = messages.slice(0)
       newArr.push(
         <Message
