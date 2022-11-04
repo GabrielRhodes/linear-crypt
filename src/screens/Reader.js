@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import Message from '../components/Message'
-import Prompt from '../components/Prompt'
 import { LinearCrypter } from '../linear-crypt/index.mjs'
 import BigNumber from 'bignumber.js'
+import Game from '../components/Game'
 
 function Reader() {
   const primP = BigNumber(309)
@@ -40,11 +40,6 @@ function Reader() {
           key={newArr.length}
         />
       )
-      setMessages(newArr)
-      setStep(step + 1)
-    },
-    () => {
-      let newArr = messages.slice(0)
       newArr.push(
         <Message
           message={`My public key is ${primP.pow(a).mod(primN)}`}
@@ -86,11 +81,6 @@ function Reader() {
           key={newArr.length}
         />
       )
-      setMessages(newArr)
-      setStep(step + 1)
-    },
-    () => {
-      let newArr = messages.slice(0)
       newArr.push(
         <Message message={`Okay!`} sender='You' mode={1} key={newArr.length} />
       )
@@ -129,12 +119,6 @@ function Reader() {
           key={newArr.length}
         />
       )
-      setMessages(newArr)
-      setStep(step + 1)
-    },
-    (msg = 'Hello World!') => {
-      let newArr = messages.slice(0)
-      let cryptr = new LinearCrypter(5, parseInt(privateChannel), 100)
       newArr.push(
         <Message
           message={`Message: ${cryptr.decrypt(cryptr.encrypt(msg))}`}
@@ -156,14 +140,7 @@ function Reader() {
   }, [step])
 
   return (
-    <div id='reader'>
-      <div id='phone'>
-        <div id='message-board'>{messages}</div>
-        <div id='control-board'>
-          <Prompt prompt={step} cleanup={cleaners[step]} />
-        </div>
-      </div>
-    </div>
+    <Game step={step} cleaners={cleaners} messages={messages} mode='reader' />
   )
 }
 

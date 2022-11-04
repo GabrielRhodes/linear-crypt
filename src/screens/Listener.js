@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import Message from '../components/Message'
-import Prompt from '../components/Prompt'
 import { LinearCrypter } from '../linear-crypt/index.mjs'
 import BigNumber from 'bignumber.js'
+import Game from '../components/Game'
 
 function Listener() {
   const primP = BigNumber(309)
@@ -131,14 +131,7 @@ function Listener() {
   }, [step])
 
   return (
-    <div id='reader'>
-      <div id='phone'>
-        <div id='message-board'>{messages}</div>
-        <div id='control-board'>
-          <Prompt prompt={step} cleanup={cleaners[step]} mode='listener' />
-        </div>
-      </div>
-    </div>
+    <Game step={step} cleaners={cleaners} messages={messages} mode='listener' />
   )
 }
 
