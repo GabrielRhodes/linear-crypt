@@ -122,7 +122,7 @@ function Prompt({ prompt, cleanup, mode }) {
             <p>
               LinearCrypt uses special properties called a chunker and salt
               along with your private channel to encrypt messages. Since
-              LinearCrupt is based in linear algebra, we use matrices to
+              LinearCrypt is based in linear algebra, we use matrices to
               communicate messages. To turn a string into a matrix though, we
               convert each character into it's ASCII value (just a fancy way to
               turn letters to numbers). Then, with the long list of numbers, we
